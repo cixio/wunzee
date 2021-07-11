@@ -27,14 +27,15 @@ Put everything together:
 - update the device: `sudo apt upgrade`
 
 ## 4. install python and dependencies
-- `sudo apt install python python-numpy python-qrcode python-serial python-requests python-pip`
+- `sudo apt install python python-numpy python-qrcode python-serial python-requests python-pip python-git`
 - `pip install vincenty`
+
 
 ## 5. display driver installation
 - `sudo raspi-config` and choose `Interfacing Options -> SPI -> Yes`
 
 
-## 6. install wunzee
+## 6. install wunzee via github
 - install git: `sudo apt install git`
 - install wunzee from github: `git clone https://github.com/cixio/wunzee.git`
 - run wunzee: `python wunzee/wunzee.py`

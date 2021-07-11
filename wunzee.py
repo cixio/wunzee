@@ -234,7 +234,10 @@ def update(utype):
         wlan = str(subprocess.check_output(["/sbin/iwgetid -r"], shell = True).strip())
 
         if utype == "sys":
-            os.system("git pull")
+            import git
+            g = git.cmd.Git(dir)
+            g.pull()
+
             status("%sUPDATE... DONE."%utype, "blue")
             time.sleep(0.5)
             restart()
