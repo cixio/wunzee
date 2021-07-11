@@ -15,7 +15,8 @@ dir = os.path.dirname(__file__)
 
 if dir == "/":
     dir = ""
-
+else:
+   dir +="/"
 
 def init():
 
