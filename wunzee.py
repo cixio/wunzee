@@ -11,7 +11,11 @@ from vincenty import vincenty
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 
 version = "0.94"
-dir = os.path.dirname(__file__) + "/"
+dir = os.path.dirname(__file__)
+
+if dir == "/":
+    dir = ""
+
 
 def init():
 
