@@ -18,8 +18,8 @@ Little helper that shows munzees near you. Based on python and a sqlite database
 
 ### Installation
 see: [installation.md](installation.md)
- 
 
-#####External Sources
+
+#### External Sources
 - Display: [LCD Driver by Waveshare](https://www.waveshare.com/wiki/1.44inch_LCD_HAT)
 - Font: [Pixel Emulator by Pixel Sagas](https://www.dafont.com/pixel-emulator.font)
