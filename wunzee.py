@@ -10,7 +10,7 @@ import math
 from vincenty import vincenty
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 
-version = "0.94"
+version = "0.96"
 dir = os.path.dirname(__file__)
 
 if dir == "/":
@@ -50,7 +50,7 @@ def init():
 
     for i in pins:
         GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(i, GPIO.RISING, callback=btn, bouncetime=200)
+        GPIO.add_event_detect(i, GPIO.RISING, callback=btn, bouncetime=300)
 
 
     print (" -> GPS")
@@ -283,7 +283,7 @@ def showqr(code,name,showrow,anz,dist):
     qr.add_data(code)
 
     img = qr.make_image(fill_color="black", back_color="#FFFFFF") # hack as white does not show up anything
-    image = img.resize((128, 128))
+    image = img.resize((128, 128),Image.NEAREST)
 
     draw = ImageDraw.Draw(image)
     if anz > 1:
