@@ -198,13 +198,12 @@ def restart():
 
 def gps_parse(data):
     sdata = data.split(",")
-    if sdata[2] == 'V':
-        #print ("no satellite data available")
+    if sdata[6] != 'A':
+        #print ("no valid satellite data available")
         return
 
-    lat = gps_decode(sdata[3])
-    lon = gps_decode(sdata[5])
-
+    lat = gps_decode(sdata[1])
+    lon = gps_decode(sdata[3])
     return [lat,lon]
 
 def gps_decode(coord):
@@ -231,7 +230,7 @@ def update(utype):
     import subprocess
 
     try:
-        wlan = str(subprocess.check_output(["/sbin/iwgetid -r"], shell = True).strip())
+        wlan = str(subprocess.check_output(["/sbin/iwgetid -r"], shell = True).decode('utf-8').strip())
 
         if utype == "sys":
             import git
@@ -266,7 +265,7 @@ def wlan_status():
         import subprocess
 
         try:
-            wlan = str(subprocess.check_output(["/sbin/iwgetid -r"], shell = True).strip())
+            wlan = str(subprocess.check_output(["/sbin/iwgetid -r"], shell = True).decode('utf-8').strip())
             status("WLAN: %s"%wlan, "blue")
 
         except subprocess.CalledProcessError as e:
@@ -356,9 +355,9 @@ def loop():
 
 
 def gpsloop(data):
-
-    if data[0:6] == "$GPRMC":
-        koord = gps_parse(data)
+    ddata = data.decode('utf-8')
+    if ddata[0:6] == "$GPGLL":
+        koord = gps_parse(ddata)
         if koord:
             get_db(koord[0],koord[1])
         else:
