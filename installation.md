@@ -11,38 +11,39 @@ Put everything together:
 
 
 ## 1. Preparations 
-- install Raspberry Pi OS Lite on the microSD: [Raspberry Pi Imager](https://www.raspberrypi.org/blog/raspberry-pi-imager-imaging-utility)
-- connect the device to your network: create a file called *wpa_supplicant.conf* in the root directory of the sd card with your network credentials like described here: [WLAN connection](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
-- allow the remote access: create an empty file called *ssh* in the root directory of the sd card (no need to open this link, just for information: [SSH remote access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md))
+- download [Raspberry Pi Imager](https://www.raspberrypi.org/blog/raspberry-pi-imager-imaging-utility)
+- select Raspberry Pi OS Lite (Raspberry Pi OS (other) -> Raspberry Pi OS Lite (32-bit)) and your microSD
+- click on the settings wheel and configure at least:
+  - enable SSH (with password access)
+  - create user and password (and remember!)
+  - Wifi
+- click write
 
 ## 2. Raspberry Pi
 - put the sd card in the raspberry and power it on
 - your raspberry will need a few minutes to power on and connect to your network
-- use a network scanner or look into your router to find the IP address of your raspberry
-- connect to using a ssh client (Windows: [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), Linux / OS X: build-in shell) it with the ip you just found out - user: **pi** / password: **raspberry**
+- use a network scanner or look into your router to find the IP address of your raspberry [How to Find your IP Address](https://www.raspberrypi.com/documentation/computers/remote-access.html#how-to-find-your-ip-address)
+- connect to using a ssh client (Windows: [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), Linux / OS X: build-in shell) it with the ip you just found out - user and password as inserted above.
 
 ## 3. first steps on device
-- change the password with `passwd` from raspberry to anything you want (and can remember later)
 - load the update list: `sudo apt update`
 - update the device: `sudo apt upgrade`
 
 ## 4. install python and dependencies
-- `sudo apt install python python-numpy python-qrcode python-serial python-requests python-pip python-git`
-- `pip install vincenty`
+- `sudo apt install python3 python3-numpy python3-qrcode python3-serial python3-requests python3-pip python3-git`
+- `pip3 install vincenty` (it takes a while, wait a minute)
 
 
 ## 5. display driver installation
-- `sudo raspi-config` and choose `Interfacing Options -> SPI -> Yes`
-
+- `sudo raspi-config` and choose `Interface Options -> SPI -> Yes`
 
 ## 6. install wunzee via github
 - install git: `sudo apt install git`
 - install wunzee from github: `git clone https://github.com/cixio/wunzee.git`
-- run wunzee: `python wunzee/wunzee.py`
-
+- run wunzee: `python wunzee/wunzee.py` (just for testing, quit with strg + c)
 
 ## 7. autostart wunzee on power on and restart when crashed
 - install supervisor: `sudo apt install supervisor`
 - copy config file `sudo cp wunzee/wunzee.conf /etc/supervisor/conf.d/wunzee.conf`
-- (if you do not use normal path, in the path in the file must be adapted)
+- (if you do not use normal path for installation, the path in wunzee.conf must be adapted)
 - reload config `sudo supervisorctl reload`

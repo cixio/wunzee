@@ -8,7 +8,7 @@ Little helper that shows munzees near you. Based on python and a sqlite database
 ### Hardware
 - Raspberry Pi Zero WH [BerryBase](https://www.berrybase.de/raspberry-pi/raspberry-pi-computer/boards/raspberry-pi-zero-wh)
 - Display: Waveshare Raspberry Pi 128x128 Pixels 1.44inch LCD [Amazon](https://www.amazon.de/gp/product/B077YK8161/)
-- GPS: Stemedu VK172 G-Mouse USB [Amazon](https://www.amazon.de/gp/product/B07LC76TVG/
+- GPS: Stemedu VK172 G-Mouse USB [Amazon](https://www.amazon.de/gp/product/B07LC76TVG/)
 - OTG Adapter [BerryBase](https://www.berrybase.de/raspberry-pi/raspberry-pi-computer/kabel-adapter/usb-kabel-adapter/super-tiny-usb-2.0-hi-speed-otg-adapter-a-buchse-micro-b-stecker)
 - microSD ~2GB
 - USB Power Cable (with angled plug, because of fitting): [Amazon](https://www.amazon.de/gp/product/B00Z6L0JD6/)
