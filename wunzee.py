@@ -10,7 +10,7 @@ import math
 from vincenty import vincenty
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 
-version = "0.96"
+version = "0.97"
 dir = os.path.dirname(__file__)
 
 if dir == "/":
@@ -108,10 +108,6 @@ def btn(channel):
     if channel == 19: #down
         if menuactive:
             menu('down')
-    if channel == 16: #key3
-        if menuactive:
-            menu('down')
-
     if channel == 16: #key3
         if menuactive:
             menu('down')
